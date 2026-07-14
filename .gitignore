@@ -1,0 +1,48 @@
+# high-poker-2 — publish the full repo except private/local generated data.
+# NEVER published: trained model weights/artifacts, training pipeline,
+# deployment credentials, local caches/logs.
+
+# Credentials and local runtime
+.env
+*.env
+miner_env
+miner_env/
+
+# Model weights and artifact stores
+model/artifacts/
+model/artifacts_backups/
+model/artifacts_staging/
+model/data_cache
+model/data_cache/
+*.pkl
+*.joblib
+*.pt
+*.bin
+
+# Training pipeline and data
+training/
+train_data/
+
+# Local logs and caches
+*.log
+*.jsonl
+catboost_info/
+__pycache__/
+*.pyc
+
+# Know-how: training recipe and deploy automation.
+# These files' own docstrings declare "LOCAL ONLY - gitignored"; the previous
+# rules only covered training/, so model/*.py trainers leaked. They are NOT in
+# the manifest's implementation_files, so withholding them does not affect
+# verification of the serving path.
+model/train_hg.py
+model/autopilot.py
+model/evaluate.py
+model/dataset.py
+model/reward_fn.py
+scripts/train_stacked_v2.sh
+
+# Prose / descriptions: core tech is not narrated in the public repo.
+README.md
+docs/
+*.md
